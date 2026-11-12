@@ -31,7 +31,7 @@ async function fetchWithRetry(fetchFn, maxRetries = 5) {
         } catch (e) {
             if (e.message.includes("429") || e.message.includes("Rate limited")) {
                 const wait = 10000 * (attempt + 1) + Math.random() * 10000;
-                console.log(`Rate limited, nunggu ${Math.round(wait / 1000)}s sebelum retry (${attempt + 1}/${maxRetries})...`);
+                console.log(`Rate limited, wait ${Math.round(wait / 1000)}s before retry (${attempt + 1}/${maxRetries})...`);
                 await sleep(wait);
                 continue;
             }
